@@ -21,6 +21,8 @@ CREATE TABLE Identificacao (
     CONSTRAINT cnpj_unico_identificacao UNIQUE (cnpj)
 );
 
+ALTER TABLE Identificacao AUTO_INCREMENT = 1;
+
 -- Criação da tabela Endereco
 CREATE TABLE Endereco (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -31,6 +33,8 @@ CREATE TABLE Endereco (
     estado CHAR(2) NOT NULL,
     cep CHAR(8) NOT NULL
 );
+
+ALTER TABLE Endereco AUTO_INCREMENT = 1;
 
 -- Criação da tabela Cliente
 CREATE TABLE Cliente (
@@ -43,6 +47,8 @@ CREATE TABLE Cliente (
 		ON DELETE CASCADE
 );
 
+ALTER TABLE Cliente AUTO_INCREMENT = 1;
+
 -- Criação da tabela DimensoesProduto
 CREATE TABLE DimensoesProduto (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -50,6 +56,8 @@ CREATE TABLE DimensoesProduto (
     largura FLOAT,
     comprimento FLOAT
 );
+
+ALTER TABLE DimensoesProduto AUTO_INCREMENT = 1;
 
 -- Criação da tabela Produto
 CREATE TABLE Produto (
@@ -63,6 +71,8 @@ CREATE TABLE Produto (
         ON UPDATE CASCADE
 );
 
+ALTER TABLE Produto AUTO_INCREMENT = 1;
+
 -- Criação da tabela PagamentoPedido
 CREATE TABLE PagamentoPedido (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -71,6 +81,8 @@ CREATE TABLE PagamentoPedido (
     metodo_pagamento ENUM('Cartão', 'Dois Cartões', 'Boleto', 'Pix') DEFAULT 'Cartão',
     status_pagamento ENUM('Pendente', 'Processando', 'Confirmado' , 'Cancelado') DEFAULT 'Pendente'
 );
+
+ALTER TABLE PagamentoPedido AUTO_INCREMENT = 1;
 
 -- Criação da tabela
 CREATE TABLE Entrega (
@@ -85,6 +97,8 @@ CREATE TABLE Entrega (
     observacoes TEXT,
     assinatura_recebedor BLOB
 );
+
+ALTER TABLE Entrega AUTO_INCREMENT = 1;
 
 -- Criação da tabela Pedido
 CREATE TABLE Pedido (
@@ -103,6 +117,8 @@ CREATE TABLE Pedido (
 		ON DELETE SET NULL
 );
 
+ALTER TABLE Pedido AUTO_INCREMENT = 1;
+
 -- Criação da tabela estoque
 CREATE TABLE Estoque (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -111,12 +127,16 @@ CREATE TABLE Estoque (
     CONSTRAINT fk_endereco_estoque FOREIGN KEY (id_endereco) REFERENCES Endereco(id)
 );
 
+ALTER TABLE Estoque AUTO_INCREMENT = 1;
+
 -- Criação da tabela ContatoFornecedor
 CREATE TABLE Contato (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(100) NOT NULL,
     telefone CHAR(11) NOT NULL
 );
+
+ALTER TABLE Contato AUTO_INCREMENT = 1;
 
 -- Criação da tabela Fornecedor
 CREATE TABLE Fornecedor (
@@ -132,6 +152,8 @@ CREATE TABLE Fornecedor (
 		ON DELETE CASCADE
 );
 
+ALTER TABLE Fornecedor AUTO_INCREMENT = 1;
+
 -- Criação da tabela Vendedor
 CREATE TABLE Vendedor (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -145,6 +167,8 @@ CREATE TABLE Vendedor (
     CONSTRAINT fk_contato_vendedor FOREIGN KEY (id_contato) REFERENCES Contato(id)
 		ON DELETE CASCADE
 );
+
+ALTER TABLE Vendedor AUTO_INCREMENT = 1;
 
 -- Criação da tabela ProdutoVendedor
 CREATE TABLE ProdutoVendedor (
